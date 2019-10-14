@@ -12,6 +12,7 @@ public class Gun : MonoBehaviour
     public float range = 100f;
     public Transform spawn;
     private Animator animator;
+    public Transform target;
     public float pente = 10f;
 
     private LineRenderer tracer;
@@ -33,6 +34,8 @@ public class Gun : MonoBehaviour
     public void Disparar(){
 
         if(podeDisparar()){
+            transform.LookAt(target);
+
             Ray ray = new Ray(spawn.position, spawn.forward);
             RaycastHit hit;
 

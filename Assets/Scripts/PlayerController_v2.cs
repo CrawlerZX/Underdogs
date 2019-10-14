@@ -30,10 +30,6 @@ public class PlayerController_v2 : MonoBehaviour
     void Update()
     {
         Control();
-
-        if( Input.GetKey(KeyCode.Space)){
-            gun.Disparar();
-        }
     }
 
     void Control(){
@@ -58,6 +54,7 @@ public class PlayerController_v2 : MonoBehaviour
             anima.SetBool("isRunning", true);
         } else{
             anima.SetBool("isRunning", false);
+            gun.Disparar();
         }
     }
     /*
