@@ -1,9 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+public abstract class Enemy
+{
+    public abstract string name { get; set; }
+}
+
 
 [System.Serializable]
-public class EnemySetup
+public class EnemySetup : Enemy
 {
-    public string name;
+    public override string name { get; set; }
+
+    public EnemySetup(string _name)
+    {
+        name = _name;
+    }
 }

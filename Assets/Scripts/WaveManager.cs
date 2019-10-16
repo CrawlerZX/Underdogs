@@ -1,30 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-    public Wave waveConfiguration;
+    private Wave waveConfiguration;
 
     public void Start()
     {
-        if (!PlayerPrefs.HasKey("configuration") || !PlayerPrefs.HasKey("configurationEnemys"))
+        PlayerPrefs.DeleteKey(WaveSetup.KEY_CONFIGURATION);
+
+        if (!PlayerPrefs.HasKey(WaveSetup.KEY_CONFIGURATION))
         {
-            //Debug.Log("setup");
-            WaveSetup.setup();
+            WaveSetup.setup();            
         }
 
-        var waveSetupJson = PlayerPrefs.GetString("configuration");
-        waveConfiguration = JsonUtility.FromJson<Wave>(waveSetupJson);
+        var waveSetupJson = PlayerPrefs.GetString(WaveSetup.KEY_CONFIGURATION);
 
-        var enemyListJson = PlayerPrefs.GetString("configutrationEnemys");
-        List<EnemySetup> enemyList = JsonUtility.FromJson<List<EnemySetup>>(enemyListJson);
+        Debug.Log(waveSetupJson);
 
-        waveConfiguration.enemyList = enemyList;
-
-        //Debug.Log(enemyListJson);
-
-        //Debug.Log(waveConfiguration.enemyList[0].name);
+        //waveConfiguration = JsonConvert.DeserializeObject(waveSetupJson) as Wave;
+        waveConfiguration = JsonConvert.DeserializeObject<Wave>(waveSetupJson, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All });
     }
-
 }

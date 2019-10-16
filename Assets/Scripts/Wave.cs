@@ -1,21 +1,25 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 public class Wave
-{    
+{   
     public int size;
-    public List<EnemySetup> enemyList;
+
+    public List<Enemy> enemyList;
+
     public bool hasTime;
+
     public float time;
+
     public bool hasBoss;
+
     public EnemySetup boss;
-    public bool atEnd;
+
+    public bool bossAtEnd;
 
     public Wave()
     {
-        enemyList = new List<EnemySetup>();
+        enemyList = new List<Enemy>();
     }
-
 }
