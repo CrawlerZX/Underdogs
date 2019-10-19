@@ -307,12 +307,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e82d0ab91e511b24fa587bf18bd71d66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveConfiguration:
-    size: 0
-    enemyList: []
-    hasTime: 0
-    time: 0
-    hasBoss: 0
-    boss:
-      name: 
-    atEnd: 0
