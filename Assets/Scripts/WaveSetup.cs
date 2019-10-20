@@ -13,8 +13,8 @@ public class WaveSetup
             wave.hasBoss = false;
             wave.bossAtEnd = false;
             wave.bossType = "";
-            wave.hasTime = false;
-            wave.time = 0;            
+            wave.hasTime = true;
+            wave.time = 100;
 
             wave.enemyTypesList[0] = "knife";
             wave.enemyTypesList[1] = "grenade";
@@ -26,7 +26,7 @@ public class WaveSetup
             wave.enemyTypesList[7] = "grenade";
             wave.enemyTypesList[8] = "knife";
             wave.enemyTypesList[9] = "grenade";
-            
+
             var setting = new JsonSerializerSettings();
             setting.Formatting = Formatting.Indented;
 

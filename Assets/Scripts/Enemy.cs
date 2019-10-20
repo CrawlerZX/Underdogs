@@ -16,11 +16,12 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        IsReady = true;
         if (IsReady)
         {
             if (Transform != null)
             {
-                //Transform.Translate(new Vector3(Random.Range(90, 180), Random.Range(0, 90), Transform.position.z), Space.World);
+                
             }            
         }        
     }
