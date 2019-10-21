@@ -9,7 +9,7 @@ public class WaveSetup
     {
         if (!PlayerPrefs.HasKey(WaveSetup.KEY_CONFIGURATION))
         {
-            var wave = new WaveConfiguration(10);
+            var wave = new WaveConfiguration(2);
             wave.hasBoss = false;
             wave.bossAtEnd = false;
             wave.bossType = "";
@@ -18,14 +18,14 @@ public class WaveSetup
 
             wave.enemyTypesList[0] = "knife";
             wave.enemyTypesList[1] = "grenade";
-            wave.enemyTypesList[2] = "knife";
-            wave.enemyTypesList[3] = "grenade";
-            wave.enemyTypesList[4] = "knife";
-            wave.enemyTypesList[5] = "grenade";
-            wave.enemyTypesList[6] = "knife";
-            wave.enemyTypesList[7] = "grenade";
-            wave.enemyTypesList[8] = "knife";
-            wave.enemyTypesList[9] = "grenade";
+            //wave.enemyTypesList[2] = "knife";
+            //wave.enemyTypesList[3] = "grenade";
+            //wave.enemyTypesList[4] = "knife";
+            //wave.enemyTypesList[5] = "grenade";
+            //wave.enemyTypesList[6] = "knife";
+            //wave.enemyTypesList[7] = "grenade";
+            //wave.enemyTypesList[8] = "knife";
+            //wave.enemyTypesList[9] = "grenade";
 
             var setting = new JsonSerializerSettings();
             setting.Formatting = Formatting.Indented;

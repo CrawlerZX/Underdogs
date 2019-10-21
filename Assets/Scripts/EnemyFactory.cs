@@ -23,6 +23,8 @@ public abstract class EnemyConfiguration
     public EnemyConfiguration(string type) {  }
 
     public abstract void Walk();
+
+    public abstract Material GetMaterial();
 }
 
 public class EnemyKnife : EnemyConfiguration
@@ -36,6 +38,11 @@ public class EnemyKnife : EnemyConfiguration
     {
         Debug.Log("EnemyKnife walking!");
     }
+
+    public override Material GetMaterial()
+    {
+        return Resources.Load("Materials/EnemyRed") as Material;
+    }
 }
 
 public class EnemyGranade : EnemyConfiguration
@@ -48,5 +55,10 @@ public class EnemyGranade : EnemyConfiguration
     public override void Walk()
     {
         Debug.Log("EnemyGranade walking!");
+    }
+
+    public override Material GetMaterial()
+    {
+        return Resources.Load("Materials/EnemyBlue") as Material;
     }
 }
