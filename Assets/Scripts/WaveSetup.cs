@@ -1,58 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
 
 public class WaveSetup
 {
+    public const string KEY_CONFIGURATION = "configuration";
+
     public static void setup()
     {
-        if (!PlayerPrefs.HasKey("configuration") || !PlayerPrefs.HasKey("configutrationEnemys"))
+        if (!PlayerPrefs.HasKey(WaveSetup.KEY_CONFIGURATION))
         {
-            var wave = new Wave();
-            wave.size = 10;            
+            var wave = new WaveConfiguration(2);
             wave.hasBoss = false;
-            wave.hasTime = false;
+            wave.bossAtEnd = false;
+            wave.bossType = "";
+            wave.hasTime = true;
+            wave.time = 100;
 
-            string json = JsonUtility.ToJson(wave);
+            wave.enemyTypesList[0] = "knife";
+            wave.enemyTypesList[1] = "grenade";
+            //wave.enemyTypesList[2] = "knife";
+            //wave.enemyTypesList[3] = "grenade";
+            //wave.enemyTypesList[4] = "knife";
+            //wave.enemyTypesList[5] = "grenade";
+            //wave.enemyTypesList[6] = "knife";
+            //wave.enemyTypesList[7] = "grenade";
+            //wave.enemyTypesList[8] = "knife";
+            //wave.enemyTypesList[9] = "grenade";
 
-            PlayerPrefs.SetString("configuration", json);
+            var setting = new JsonSerializerSettings();
+            setting.Formatting = Formatting.Indented;
 
-            var EnemySetup01 = new EnemySetup();
-            EnemySetup01.name = "knife";
-            var EnemySetup02 = new EnemySetup();
-            EnemySetup02.name = "grenade";
-            var EnemySetup03 = new EnemySetup();
-            EnemySetup03.name = "assaultRifle";
-            var EnemySetup04 = new EnemySetup();
-            EnemySetup04.name = "sniper";
-            var EnemySetup05 = new EnemySetup();
-            EnemySetup05.name = "knife";
-            var EnemySetup06 = new EnemySetup();
-            EnemySetup06.name = "shotgun";
-            var EnemySetup07 = new EnemySetup();
-            EnemySetup07.name = "speedKnife";
-            var EnemySetup08 = new EnemySetup();
-            EnemySetup08.name = "molotov";
-            var EnemySetup09 = new EnemySetup();
-            EnemySetup09.name = "bazuka";
-            var EnemySetup10 = new EnemySetup();
-            EnemySetup10.name = "assaultRifle";
+            var json = JsonConvert.SerializeObject(wave, setting);
 
-            var enemyList = new List<EnemySetup>();
-            enemyList.Add(EnemySetup01);
-            enemyList.Add(EnemySetup02);
-            enemyList.Add(EnemySetup03);
-            enemyList.Add(EnemySetup04);
-            enemyList.Add(EnemySetup05);
-            enemyList.Add(EnemySetup06);
-            enemyList.Add(EnemySetup07);
-            enemyList.Add(EnemySetup08);
-            enemyList.Add(EnemySetup09);
-            enemyList.Add(EnemySetup10);
-
-            var listJson = JsonUtility.ToJson(enemyList);
-            Debug.Log(listJson);
-            PlayerPrefs.SetString("configutrationEnemys", listJson);
+            PlayerPrefs.SetString(WaveSetup.KEY_CONFIGURATION, json);
         }
     }
 }

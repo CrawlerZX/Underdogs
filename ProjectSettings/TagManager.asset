@@ -8,6 +8,8 @@ TagManager:
   - Aim
   - Enemy
   - Joystick
+  - RespawnArea
+  - WaveTimer
   layers:
   - Default
   - TransparentFX

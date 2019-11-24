@@ -1,30 +1,81 @@
-using System.Collections;
-using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
-
 public class WaveManager : MonoBehaviour
 {
-    public Wave waveConfiguration;
+    private float WaveTimer { get; set; }
+
+    private Transform ParentTransform { get; set; }
+
+    private WaveConfiguration waveConfiguration { get; set; }
 
     public void Start()
     {
-        if (!PlayerPrefs.HasKey("configuration") || !PlayerPrefs.HasKey("configurationEnemys"))
+        PlayerPrefs.DeleteKey(WaveSetup.KEY_CONFIGURATION);
+
+        if (!PlayerPrefs.HasKey(WaveSetup.KEY_CONFIGURATION))
         {
-            //Debug.Log("setup");
             WaveSetup.setup();
         }
 
-        var waveSetupJson = PlayerPrefs.GetString("configuration");
-        waveConfiguration = JsonUtility.FromJson<Wave>(waveSetupJson);
+        var waveSetupJson = PlayerPrefs.GetString(WaveSetup.KEY_CONFIGURATION);
 
-        var enemyListJson = PlayerPrefs.GetString("configutrationEnemys");
-        List<EnemySetup> enemyList = JsonUtility.FromJson<List<EnemySetup>>(enemyListJson);
+        waveConfiguration = JsonConvert.DeserializeObject<WaveConfiguration>(waveSetupJson, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All });
 
-        waveConfiguration.enemyList = enemyList;
+        SpawnEnemys();
+        SetTime();
+    }
 
-        //Debug.Log(enemyListJson);
+    private void Update()
+    {
+        if (WaveTimer > 0)
+        {
+            WaveTimer -= Time.deltaTime;
+        }
+    }
 
-        //Debug.Log(waveConfiguration.enemyList[0].name);
+    private void SetTime()
+    {
+        if (waveConfiguration.hasTime)
+        {
+            WaveTimer = waveConfiguration.time;
+        }        
+    }
+
+    private void SpawnEnemys()
+    {
+        ParentTransform = GameObject.FindWithTag("RespawnArea").transform;
+
+        Object prefab = Resources.Load("Prefab/EnemyPrefab");
+
+        if (waveConfiguration != null && ParentTransform != null && prefab != null)
+        {
+            for (int i = 0; i <= waveConfiguration.enemyTypesList.Length - 1; i++)
+            {
+                var enemyType = waveConfiguration.enemyTypesList[i];
+
+                if (string.IsNullOrEmpty(enemyType))
+                    continue;
+
+                GameObject newObject = Instantiate(prefab, new Vector3(Random.Range(0, ParentTransform.position.x), ParentTransform.position.y, ParentTransform.position.z), Quaternion.identity) as GameObject;
+
+                Enemy enemyScript = newObject.GetComponent<Enemy>();
+
+                if (enemyScript != null)
+                {
+                    enemyScript.LoadConfiguration(enemyType);
+                }
+            }
+        }
+    }
+
+    public float GetWaveTimer()
+    {
+        return WaveTimer;
+    }
+
+    public bool IsTimer()
+    {
+        return waveConfiguration.hasTime;
     }
 
 }
