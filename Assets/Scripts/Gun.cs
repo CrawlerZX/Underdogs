@@ -7,12 +7,12 @@ public class Gun : MonoBehaviour
 {
     public float tpm;
 
-    public float damage = 10f;
+    public float damage = 50f;
 
     public float range = 100f;
     public Transform spawn;
     private Animator animator;
-    public Transform target;
+    //public Transform target;
     public float pente = 10f;
 
     private LineRenderer tracer;
@@ -31,10 +31,10 @@ public class Gun : MonoBehaviour
         }
     }
 
-    public void Disparar(){
-
-        if(podeDisparar()){
-            transform.LookAt(target);
+    public void Disparar(GameObject target)
+    {
+        if(target != null && podeDisparar()){
+            transform.LookAt(target.transform);
 
             Ray ray = new Ray(spawn.position, spawn.forward);
             RaycastHit hit;
@@ -44,7 +44,7 @@ public class Gun : MonoBehaviour
             float distanciaTiro = 250f;
             
             if(Physics.Raycast(ray, out hit, distanciaTiro)){
-            distanciaTiro = hit.distance;
+                distanciaTiro = hit.distance;
             }
 
             proxPossivelDisparo = Time.time + segundosEntreDisparos;
@@ -57,8 +57,13 @@ public class Gun : MonoBehaviour
             }
 
             animator.SetTrigger("Shoot");
-        }
 
+            if (target != null)
+            {
+                Target targetScript = target.GetComponent<Target>();
+                targetScript.TakeDamage(damage);
+            }
+        }
     }
 
     public void Recarga()
@@ -71,14 +76,15 @@ public class Gun : MonoBehaviour
     {
         bool podeDisparar = true;
 
-        if (Time.time < proxPossivelDisparo || pente == 0) {
+        if (Time.time < proxPossivelDisparo) { // || pente == 0) {
             podeDisparar = false;
         }
 
         return podeDisparar;
     }
 
-    IEnumerator RenderTracer (Vector3 hitPoint){
+    IEnumerator RenderTracer (Vector3 hitPoint)
+    {
         tracer.enabled = true;
         tracer.SetPosition(0, spawn.position);
         tracer.SetPosition(1, spawn.position + hitPoint);

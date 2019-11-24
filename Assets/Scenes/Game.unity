@@ -153,7 +153,7 @@ Transform:
   - {fileID: 1688211265}
   - {fileID: 1636329499}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &252832597
 GameObject:
@@ -274,9 +274,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: TS_militias_desert_II
       objectReference: {fileID: 0}
+    - target: {fileID: 169224, guid: 38515754d2319ee44a0f3db2b5cdc71f, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 499978, guid: 38515754d2319ee44a0f3db2b5cdc71f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20
+      value: 23.4
       objectReference: {fileID: 0}
     - target: {fileID: 499978, guid: 38515754d2319ee44a0f3db2b5cdc71f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -284,7 +288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 499978, guid: 38515754d2319ee44a0f3db2b5cdc71f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20
+      value: -22.8
       objectReference: {fileID: 0}
     - target: {fileID: 499978, guid: 38515754d2319ee44a0f3db2b5cdc71f, type: 3}
       propertyPath: m_LocalRotation.x
@@ -537,7 +541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 408746, guid: 0a85d02541458ec4791a3e342602a641, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 408746, guid: 0a85d02541458ec4791a3e342602a641, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -879,7 +883,7 @@ RectTransform:
   m_Children:
   - {fileID: 1056910657}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -897,9 +901,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: TS_militias_desert_I
       objectReference: {fileID: 0}
+    - target: {fileID: 169224, guid: 38515754d2319ee44a0f3db2b5cdc71f, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 499978, guid: 38515754d2319ee44a0f3db2b5cdc71f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20
+      value: -23.2
       objectReference: {fileID: 0}
     - target: {fileID: 499978, guid: 38515754d2319ee44a0f3db2b5cdc71f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -907,7 +915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 499978, guid: 38515754d2319ee44a0f3db2b5cdc71f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20
+      value: -22.8
       objectReference: {fileID: 0}
     - target: {fileID: 499978, guid: 38515754d2319ee44a0f3db2b5cdc71f, type: 3}
       propertyPath: m_LocalRotation.x
@@ -927,7 +935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 499978, guid: 38515754d2319ee44a0f3db2b5cdc71f, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 499978, guid: 38515754d2319ee44a0f3db2b5cdc71f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1011,7 +1019,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1493327777 stripped
 MonoBehaviour:
@@ -1253,9 +1261,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: TS_militias_desert_III
       objectReference: {fileID: 0}
+    - target: {fileID: 169224, guid: 38515754d2319ee44a0f3db2b5cdc71f, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 499978, guid: 38515754d2319ee44a0f3db2b5cdc71f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20
+      value: -17.5
       objectReference: {fileID: 0}
     - target: {fileID: 499978, guid: 38515754d2319ee44a0f3db2b5cdc71f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1263,7 +1275,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 499978, guid: 38515754d2319ee44a0f3db2b5cdc71f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20
+      value: 5.8
       objectReference: {fileID: 0}
     - target: {fileID: 499978, guid: 38515754d2319ee44a0f3db2b5cdc71f, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1366,7 +1378,6 @@ MonoBehaviour:
   damage: 10
   range: 100
   spawn: {fileID: 920221871}
-  target: {fileID: 0}
   pente: 10
 --- !u!82 &1653844000
 AudioSource:
@@ -1678,9 +1689,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: TS_militias_desert_IV
       objectReference: {fileID: 0}
+    - target: {fileID: 169224, guid: 38515754d2319ee44a0f3db2b5cdc71f, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 499978, guid: 38515754d2319ee44a0f3db2b5cdc71f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20
+      value: 22.68
       objectReference: {fileID: 0}
     - target: {fileID: 499978, guid: 38515754d2319ee44a0f3db2b5cdc71f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1688,7 +1703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 499978, guid: 38515754d2319ee44a0f3db2b5cdc71f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20
+      value: 22.77
       objectReference: {fileID: 0}
     - target: {fileID: 499978, guid: 38515754d2319ee44a0f3db2b5cdc71f, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1916,7 +1931,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &2142532827 stripped
 GameObject:

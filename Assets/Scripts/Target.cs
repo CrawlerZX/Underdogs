@@ -17,23 +17,21 @@ public class Target : MonoBehaviour
         enemyAnim = GetComponent<Animator>();
     }
     
-
-    void Update(){
+    void FixedUpdate(){
         transform.LookAt(player);
 
-        if(Vector3.Distance(transform.position,player.position) >= MinDist){
-            
+        if (Vector3.Distance(transform.position, player.position) >= MinDist)
+        {
             transform.position += transform.forward * MoveSpeed * Time.deltaTime;
-        
+
             enemyAnim.SetBool("EnemyRunning", true);
             enemyAnim.SetBool("EnemyShooting", false);
-                
-            if(Vector3.Distance(transform.position, player.position) <= MaxDist){
+
+            if (Vector3.Distance(transform.position, player.position) <= MaxDist)
+            {
                 enemyAnim.SetBool("EnemyShooting", true);
             }
-        
         }
-        
     }
 
     public void TakeDamage(float amount)

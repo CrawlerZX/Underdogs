@@ -27,7 +27,7 @@ public class PlayerController_v2 : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Control();
     }
@@ -53,8 +53,11 @@ public class PlayerController_v2 : MonoBehaviour
         if(inputX != 0.0 || inputY != 0.0 ){
             anima.SetBool("isRunning", true);
         } else{
+
+            var enemyCloser = GetEnemyCloser();
+
             anima.SetBool("isRunning", false);
-            gun.Disparar();
+            gun.Disparar(enemyCloser);
         }
     }
     /*
@@ -71,6 +74,30 @@ public class PlayerController_v2 : MonoBehaviour
 
     public void KnifeAttack(){
         anima.SetTrigger("KnifeAttack");
+    }
+
+    public GameObject GetEnemyCloser()
+    {
+        var enemys = GameObject.FindGameObjectsWithTag("Enemy");
+        if (enemys == null || enemys.Length == 0)
+        {
+            return null;
+        }
+
+        var minorDistanceIndex = 0;
+        var minorDistance = DistanceCalculator.GetDistance(gameObject.transform.position, enemys[0].transform.position);
+
+        for (int i = 0; i < enemys.Length; i++)
+        {
+             var distance = DistanceCalculator.GetDistance(gameObject.transform.position, enemys[i].transform.position);
+
+            if (distance < minorDistance)
+            {
+                minorDistanceIndex = i;
+            }
+        }
+
+        return enemys[minorDistanceIndex];
     }
     
 }
