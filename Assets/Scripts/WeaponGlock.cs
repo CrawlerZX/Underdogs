@@ -51,7 +51,7 @@ public class WeaponGlock : MonoBehaviour
             if (Physics.Raycast( ray, out hit, range)) {
                 Debug.Log(hit.transform.name);
 
-                Target target = hit.transform.GetComponent<Target>();
+                EnemyBase target = hit.transform.GetComponent<EnemyBase>();
                 if (target != null) {
                     target.TakeDamage(damage);
                 }

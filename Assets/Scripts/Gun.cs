@@ -60,7 +60,7 @@ public class Gun : MonoBehaviour
 
             if (target != null)
             {
-                Target targetScript = target.GetComponent<Target>();
+                EnemyBase targetScript = target.GetComponent<EnemyBase>();
                 targetScript.TakeDamage(damage);
             }
         }

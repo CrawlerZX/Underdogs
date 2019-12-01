@@ -6,17 +6,24 @@ using UnityEngine;
 
 public class PlayerController_v2 : MonoBehaviour
 {
-    [SerializeField] private Transform _head;
+    
+    public string nome;
+     
     [Range(1,10)]
     public float walkSpeed = 5f;
     public float runSpeed = 8f;
     public float rotationSpeed = 450f;
-    public Joystick joystick;
+    private Joystick _joystick;
     private Animator anima;
     private float knifeRange = 1.75f;
     private CharacterController controller;
     private Gun gun;
     private Quaternion targetRotation;
+
+    void Awake()
+    {
+        _joystick = FindObjectOfType<Joystick>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -34,10 +41,10 @@ public class PlayerController_v2 : MonoBehaviour
 
     void Control(){
 
-        var inputX = joystick.Horizontal;
-        var inputY = joystick.Vertical;
+        var inputX = _joystick.Horizontal;
+        var inputY = _joystick.Vertical;
 
-        Vector3 inputMove = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
+        Vector3 inputMove = new Vector3(_joystick.Horizontal, 0, _joystick.Vertical);
 
         if(inputMove != Vector3.zero){
             targetRotation = Quaternion.LookRotation(inputMove);
@@ -78,6 +85,7 @@ public class PlayerController_v2 : MonoBehaviour
 
     public GameObject GetEnemyCloser()
     {
+        return null;
         var enemys = GameObject.FindGameObjectsWithTag("Enemy");
         if (enemys == null || enemys.Length == 0)
         {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Target : MonoBehaviour
+public class EnemyBase : MonoBehaviour
 {
     private float health = 50f;
     private Transform player;
@@ -27,10 +27,14 @@ public class Target : MonoBehaviour
             enemyAnim.SetBool("EnemyRunning", true);
             enemyAnim.SetBool("EnemyShooting", false);
 
-            if (Vector3.Distance(transform.position, player.position) <= MaxDist)
-            {
-                enemyAnim.SetBool("EnemyShooting", true);
-            }
+            //if (Vector3.Distance(transform.position, player.position) <= MaxDist)
+            //{
+            //    enemyAnim.SetBool("EnemyShooting", true);
+            //}
+        } else
+        {
+            enemyAnim.SetBool("EnemyRunning", false);
+            enemyAnim.SetBool("EnemyShooting", true);
         }
     }
 

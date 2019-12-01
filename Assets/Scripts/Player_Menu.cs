@@ -11,30 +11,30 @@ public class Player_Menu : MonoBehaviour
     private bool NextIdleII = false;
     private float rotSpeed = 5;
 
-    void Start()
+    void Awake()
     {
         anima = GetComponent<Animator>();
+    }
 
-        Vector3 charStart = new Vector3(0,0,-7.5f);
-        transform.SetPositionAndRotation(charStart,Quaternion.Euler(0,0,0));
+    public void PrepareMoveToCamera()
+    {
+        transform.localRotation = Quaternion.identity;
+        transform.localPosition = new Vector3(0f, 0f, -6f);
+        anima.SetBool("WalkingMenu", true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.z <= -1.5f){
-            anima.SetBool("WalkingMenu", true);
 
-            transform.position += Vector3.forward * Time.deltaTime;
-
-
+        if(transform.localPosition.z <= -0.1f){
+            transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, .5f * Time.deltaTime);
+            //Tem que ficar ajustando sempre a posição local pois a animação do personagem andando esta desajustando o mesmo na tela.
+            transform.localPosition = new Vector3(0f, 0f, transform.localPosition.z);
         } else{
             anima.SetBool("WalkingMenu",false);
-
-            float rotY = Input.GetAxis("Mouse X") * rotSpeed;
-
-            transform.Rotate(Vector3.up, rotY);
-            //transform.Rotate(Vector3.up, Time.deltaTime * 5f);
+            //Tem que ficar ajustando sempre a posição local pois a animação do personagem andando esta desajustando o mesmo na tela.
+            transform.localPosition = Vector2.zero;
         }
 
         clock -= Time.deltaTime;
